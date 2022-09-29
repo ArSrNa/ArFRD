@@ -56,6 +56,24 @@ var result={
   return result
 }
 
+function batch(exp,name,fixed){
+    var result=[];
+    var rds=(Math.random()).toFixed(fixed);
+    for(var i1=0;i1<exp.length;i1++){
+        if(rds<=exp[i1]){
+            result.push(name[i])
+            //这里要对应 name:value 形式
+            //搞不懂怎么搞了，现在已经完成foreach查找每一个名称对应概率了
+        }
+    }
+      return result
+    }
+
+    var exp=[0.015,0.135,0.25,0.6],
+        name=['S级角色卡','A级角色卡','A级碎片','材料'];
+
+
+
 var ress=[]
 for(var i=0;i<10;i++){
    ress.push(elysia())
