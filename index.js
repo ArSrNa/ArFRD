@@ -57,25 +57,41 @@ var result={
 }
 
 function batch(exp,name,fixed){
-    var result=[];
     var rds=(Math.random()).toFixed(fixed);
     for(var i1=0;i1<exp.length;i1++){
         if(rds<=exp[i1]){
-            result.push(name[i])
-            //这里要对应 name:value 形式
-            //搞不懂怎么搞了，现在已经完成foreach查找每一个名称对应概率了
+            return(i1)
         }
     }
-      return result
+ }
+
+ function specific(exp,fixed,name,times,bdArgs){
+    //arg pwd by Ar-Sr-Na
+    //概率,保留小数位,友好名称,次数,保底参数{time:次数}
+    var num=0
+    for(var i1=0;i1<times;i1++){
+        var rds=parseFloat((Math.random()*100).toFixed(fixed));
+        if(rds<=exp){
+            num++
+        }else if(num==0 && i1+1==bdArgs){
+            num++
+        }
     }
+    return({name:name,times:num,probable:parseFloat((num/times).toFixed(fixed+2))})
+ }
 
-    var exp=[0.015,0.135,0.25,0.6],
-        name=['S级角色卡','A级角色卡','A级碎片','材料'];
+    var rname=['薪炎之律者角色卡','午夜苦艾角色卡','白夜执事角色卡','黯蔷薇角色卡','蓝莓特攻角色卡','午夜苦艾碎片','白夜执事碎片','黯蔷薇碎片','蓝莓特攻碎片','高级技能材料','相转移镜面','装甲残晶'],
+    exp=[1.50,4.50,3.00,3.00,3.00,15.00,3.33,3.33,3.33,1.50,6.00,36.50],
+    bd=[100,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    res=[];
+    for(var i=0;i<exp.length;i++){
+        console.log(specific(exp[i],2,rname[i],100,bd[i]));
+    }
+    //console.log(res);
+    debugger;
 
-
-
-var ress=[]
-for(var i=0;i<10;i++){
-   ress.push(elysia())
-}
-console.log(ress)
+// var ress=[]
+// for(var i=0;i<10;i++){
+//    ress.push(elysia())
+// }
+// console.log(ress)
