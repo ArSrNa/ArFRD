@@ -1,4 +1,4 @@
-# ArSrNa False Random 适用抽卡的伪随机算法
+# False Random 伪随机算法
 
 ## 原理
 
